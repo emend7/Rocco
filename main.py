@@ -20,7 +20,7 @@ pygame.display.set_icon(icon)
 
 # Set up Rocco NPC
 rocco = pygame.image.load("assets/rocco/rocco_still.png")
-rocco = pygame.transform.scale(rocco, (200, 100))
+
 
 # Set up Player NPC
 hand = pygame.image.load("assets/player/cursor_hover.png")
