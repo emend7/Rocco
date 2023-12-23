@@ -2,9 +2,10 @@
 
 # Import and initialize the pygame library
 import pygame
+
 pygame.init()
 
-#game window
+# game window
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500
 
@@ -19,7 +20,14 @@ pygame.display.set_icon(icon)
 
 # Set up Rocco NPC
 rocco = pygame.image.load("assets/rocco/rocco_still.png")
-rocco = pygame.transform.scale(rocco, (57,30))
+rocco = pygame.transform.scale(rocco, (200, 100))
+
+# Set up Player NPC
+hand = pygame.image.load("assets/player/cursor_hover.png")
+hand = pygame.transform.scale(hand, (57, 57))
+hand = pygame.cursors.Cursor((20, 20), hand)
+pygame.mouse.set_cursor(hand)
+pygame.mouse.set_visible(True)
 
 # Run until the user asks to quit
 running = True
@@ -34,7 +42,7 @@ while running:
     screen.fill((255, 255, 255))
 
     # Draw rocco in the center
-    screen.blit(rocco, (220, 250))
+    screen.blit(rocco, ((250 - rocco.get_width()/2), 250))
 
     # Flip the display
     pygame.display.flip()
