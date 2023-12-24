@@ -49,7 +49,7 @@ while running:
     # Fill the background with white
     screen.fill((255, 255, 255))
 
-    # Draw rocco in the center
+    # Draw rocco
     rocco.draw(screen)
 
     # Flip the display

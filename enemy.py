@@ -4,23 +4,23 @@ import pygame
 class Rocco(object):
     sprite = pygame.image.load("assets/rocco/rocco_still.png")
     state = "still"
-    pos_x = 0;
-    pos_y = 0;
+    pos_x = 0
+    pos_y = 0
 
     def __init__(self, screen_width, screen_height):
+        # save the screen size for use
         self.screen_width = screen_width
         self.screen_height = screen_height
+
+        # save the size of the sprite
         self.width = self.sprite.get_width()
         self.height = self.sprite.get_height()
-
-        self.walkCount = 0
-        self.vel = 3
 
     def draw(self, screen):
         if self.state == "still":
             # since we are at still, set the sprite to the middle of the screen
-            # by taking half of it and then subtracting half of the length of
-            # the current sprite.
+            # by taking half of the screen size and then subtracting half of the
+            # length of the current sprite.
             self.pos_x = self.screen_width / 2 - self.width / 2
             self.pos_y = self.screen_height / 2
             screen.blit(self.sprite, (self.pos_x, self.pos_y))
