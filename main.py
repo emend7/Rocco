@@ -31,6 +31,10 @@ hand = pygame.cursors.Cursor((20, 20), hand)
 pygame.mouse.set_cursor(hand)
 pygame.mouse.set_visible(True)
 
+clench = pygame.image.load("assets/player/cursor_clench.png")
+clench = pygame.transform.scale(clench, (57, 57))
+clench = pygame.cursors.Cursor((20, 20), clench)
+
 # Run until the user asks to quit
 running = True
 while running:
@@ -39,8 +43,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            pygame.mouse.set_cursor(clench)
+
         if event.type == pygame.MOUSEBUTTONUP:
+            pygame.mouse.set_cursor(hand)
+
             x, y = pygame.mouse.get_pos()
+
             if rocco.touching(x, y):
                 touched += 1;
                 if touched == 6:
