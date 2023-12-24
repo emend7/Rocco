@@ -2,6 +2,7 @@
 
 # Import and initialize the pygame library
 import pygame
+from enemy import Rocco
 
 pygame.init()
 
@@ -19,8 +20,9 @@ pygame.display.set_caption("Rocco")
 pygame.display.set_icon(icon)
 
 # Set up Rocco NPC
-rocco = pygame.image.load("assets/rocco/rocco_still.png")
-
+screen_width, screen_height = pygame.display.get_surface().get_size()
+rocco = Rocco(screen_width, screen_height)
+touched = 0
 
 # Set up Player NPC
 hand = pygame.image.load("assets/player/cursor_hover.png")
@@ -31,17 +33,22 @@ pygame.mouse.set_visible(True)
 
 # Run until the user asks to quit
 running = True
-while running:
+while running and touched != 6:
     # Did the user click the window close button?
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.MOUSEBUTTONUP:
+            if rocco.touching(x, y):
+                touched += 1;
 
     # Fill the background with white
     screen.fill((255, 255, 255))
 
     # Draw rocco in the center
-    screen.blit(rocco, ((250 - rocco.get_width()/2), 250))
+    rocco.draw(screen)
+
+    x, y = pygame.mouse.get_pos()
 
     # Flip the display
     pygame.display.flip()
