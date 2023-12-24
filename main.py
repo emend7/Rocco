@@ -33,22 +33,24 @@ pygame.mouse.set_visible(True)
 
 # Run until the user asks to quit
 running = True
-while running and touched != 6:
+while running:
     # Did the user click the window close button?
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
         if event.type == pygame.MOUSEBUTTONUP:
+            x, y = pygame.mouse.get_pos()
             if rocco.touching(x, y):
                 touched += 1;
+                if touched == 6:
+                    running = False
 
     # Fill the background with white
     screen.fill((255, 255, 255))
 
     # Draw rocco in the center
     rocco.draw(screen)
-
-    x, y = pygame.mouse.get_pos()
 
     # Flip the display
     pygame.display.flip()

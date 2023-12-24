@@ -32,3 +32,6 @@ class Rocco(object):
                 return True
 
         return False
+
+    def set_State(self, state):
+        self.state = state
