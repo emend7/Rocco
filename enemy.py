@@ -2,6 +2,7 @@ import pygame
 
 
 class Rocco(object):
+
     sprite = pygame.image.load("assets/rocco/rocco_still.png")
     state = "still"
     pos_x = 0
@@ -33,5 +34,5 @@ class Rocco(object):
 
         return False
 
-    def set_State(self, state):
+    def set_state(self, state):
         self.state = state

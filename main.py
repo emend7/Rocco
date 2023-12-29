@@ -3,6 +3,7 @@
 # Import and initialize the pygame library
 import pygame
 from enemy import Rocco
+from tools import SpriteSheet
 
 pygame.init()
 
@@ -24,6 +25,9 @@ screen_width, screen_height = pygame.display.get_surface().get_size()
 rocco = Rocco(screen_width, screen_height)
 touched = 0
 
+# Set up Eye Mechanic
+eye = SpriteSheet("assets/eye/eye.png")
+
 # Set up Player NPC
 hand = pygame.image.load("assets/player/cursor_hover.png")
 hand = pygame.transform.scale(hand, (57, 57))
@@ -38,6 +42,8 @@ clench = pygame.cursors.Cursor((20, 20), clench)
 # Run until the user asks to quit
 running = True
 while running:
+    eye.load(0, 4)
+    eye.animate()
     # Did the user click the window close button?
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -61,6 +67,9 @@ while running:
 
     # Draw rocco
     rocco.draw(screen)
+
+    # Draw Eye
+    screen.blit(eye.get_image(0, 100, 100, 1, (255, 255, 255)), (0, 0))
 
     # Flip the display
     pygame.display.flip()
